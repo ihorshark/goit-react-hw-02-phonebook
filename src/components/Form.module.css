@@ -16,8 +16,9 @@
 }
 
 .input {
-  /* outline: none; */
-  /* border: none; */
+  width: 200px;
+  height: 30px;
+
   border: 1px solid rgba(33, 33, 33, 0.3);
   box-sizing: border-box;
   border-radius: 4px;
@@ -30,14 +31,15 @@
 
 button {
   width: 100px;
+  height: 30px;
   border: none;
-  color: white;
-  background-color: skyblue;
+  color: black;
+  border: 1px solid rgba(33, 33, 33, 0.3);
+  border-radius: 4px;
   cursor: pointer;
 }
 
 button:hover {
-  color: black;
-  background-color: white;
-  transform: scale(1.2);
+  color: white;
+  background-color: skyblue;
 }
