@@ -16,31 +16,27 @@ export class App extends Component {
     filter: '',
   };
 
-  func = arr => {
-    return evt => {
-      evt.preventDefault();
+  formSumbitHandler = data => {
+    const addingExistingName = this.state.contacts.some(
+      contact => contact.name === data.name
+    );
 
-      const addingExistingName = this.state.contacts.some(
-        contact => contact.name === arr.name
-      );
+    if (addingExistingName) {
+      alert(`${data.name} is already in contacts`);
+      return;
+    }
 
-      if (addingExistingName) {
-        alert(`${arr.name} is already in contacts`);
-        return;
-      }
-
-      this.setState(prevState => {
-        return {
-          contacts: [
-            ...prevState.contacts,
-            {
-              ...arr,
-              id: nanoid(),
-            },
-          ],
-        };
-      });
-    };
+    this.setState(prevState => {
+      return {
+        contacts: [
+          ...prevState.contacts,
+          {
+            ...data,
+            id: nanoid(),
+          },
+        ],
+      };
+    });
   };
 
   handleFilterChange = evt => {
@@ -66,7 +62,7 @@ export class App extends Component {
     return (
       <div>
         <h1>Phonebook</h1>
-        <Form submitHandler={this.func} />
+        <Form submitHandler={this.formSumbitHandler} />
         <h1>Contacts</h1>
         <Filter value={this.state.filter} onChange={this.handleFilterChange} />
         <ContactList
